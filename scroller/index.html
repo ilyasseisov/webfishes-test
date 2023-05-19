@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>main</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="slider-container">
+        <div class="slider-track">
+          <div class="slider-item">
+            <a href="https://webfishes.de/">
+              <img class="slide-logo" src="./assets/logo.png" />
+              <img class="slide-discount" src="./assets/discount.png" />
+              <img class="slide-heading" src="./assets/heading-slide-1.png" />
+              <img class="slide-cta" src="./assets/cta.svg" />
+            </a>
+            <img class="slide-image" src="./assets/img-slide-1.png" />
+          </div>
+          <div class="slider-item">
+            <a href="https://webfishes.de/">
+              <img class="slide-logo" src="./assets/logo.png" />
+              <img class="slide-discount" src="./assets/discount.png" />
+              <img class="slide-heading" src="./assets/heading-slide-2.png" />
+              <img class="slide-cta" src="./assets/cta.svg" />
+            </a>
+            <img class="slide-image" src="./assets/img-slide-2.png" />
+          </div>
+          <div class="slider-item">
+            <a href="https://webfishes.de/">
+              <img class="slide-logo" src="./assets/logo-2.png" />
+              <img class="slide-discount" src="./assets/discount.png" />
+              <img class="slide-heading" src="./assets/heading-slide-3.png" />
+              <img class="slide-cta" src="./assets/cta.svg" />
+            </a>
+            <img class="slide-image" src="./assets/img-slide-3.png" />
+          </div>
+          <div class="slider-item">
+            <a href="https://webfishes.de/">
+              <img class="slide-logo" src="./assets/logo.png" />
+              <img class="slide-discount" src="./assets/discount.png" />
+              <img class="slide-heading" src="./assets/heading-slide-4.png" />
+              <img class="slide-cta" src="./assets/cta.svg" />
+            </a>
+            <img class="slide-image" src="./assets/img-slide-4.png" />
+          </div>
+        </div>
+      </div>
+      <!-- buttons -->
+      <button class="btn-prev-slide">
+        <img src="./assets/prev-slide.svg" />
+      </button>
+      <button class="btn-next-slide">
+        <img src="./assets/next-slide.svg" />
+      </button>
+      <!--end buttons -->
+    </div>
+
+    <script>
+      var isInterstitial = false;
+
+      var avgVStart = 0.01;
+
+      var avgVEnd = 0.0;
+
+      var clickTag = '';
+
+      var dspx_debug = readGETParameter('dspx_debug');
+
+      function readGETParameter(c) {
+        var o = window.location.search.substring(1);
+        var n = o.split('&');
+        for (var e = 0; e < n.length; e++) {
+          var i = n[e].split('=');
+          if (i[0] == c) {
+            return decodeURIComponent(i[1]);
+          }
+        }
+        return c == 'encodelevel' ? 2 : 0;
+      }
+
+      function fireASCClicks() {
+        var _c = 'dspx_clicktagASC',
+          _nn = 5;
+        var cASC = function (c, nn) {
+          var n = window.location.search.substring(1),
+            i = n.split('&');
+          var aa = [];
+          for (var e = 0; e < i.length; e++) {
+            var o = i[e].split('=');
+            for (var ni = 0; ni < nn; ni++) {
+              if (ni == 0) cc = c;
+              else cc = c + ni;
+              if (o[0] == cc) {
+                aa.push(decodeURIComponent(o[1]));
+              }
+            }
+          }
+          return aa;
+        };
+        var ctASC = cASC(_c, _nn);
+        for (i = 0; i < ctASC.length; i++) {
+          if (dspx_debug == 1) console.log('fire Click ASC:' + ctASC[i]);
+          new Image().src = ctASC[i];
+        }
+      }
+
+      function clickout_1() {
+        fireASCClicks();
+        var e = readGETParameter('clicktag') || clickTag;
+        if (dspx_debug == 1) {
+          console.log(e);
+        }
+        window.open(e);
+      }
+
+      function track_vtr(progress) {
+        if (progress == 0) {
+          console.log(progress);
+        } else if (progress == 25) {
+          console.log(progress);
+        } else if (progress == 50) {
+          console.log(progress);
+        } else if (progress == 75) {
+          console.log(progress);
+        } else if (progress == 100) {
+          console.log(progress);
+        }
+      }
+    </script>
+    <!-- slider -->
+    <script>
+      let position = 0;
+      const slidesToShow = 1;
+      const slidesToScroll = 1;
+      const container = document.querySelector('.slider-container');
+      const track = document.querySelector('.slider-track');
+      //
+      const btnPrev = document.querySelector('.btn-prev-slide');
+      const btnNext = document.querySelector('.btn-next-slide');
+      const items = document.querySelectorAll('.slider-item');
+      const itemsCount = items.length;
+      const itemWidth = container.clientWidth / slidesToShow;
+      const movePosition = slidesToScroll * itemWidth;
+      ////
+      items.forEach((item) => {
+        item.style.minWidth = `${itemWidth}px`;
+      });
+      //
+      btnNext.addEventListener('click', () => {
+        const itemsLeft =
+          itemsCount -
+          (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+
+        position -=
+          itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+        setPosition();
+        checkBtns();
+      });
+      //
+      btnPrev.addEventListener('click', () => {
+        const itemsLeft = Math.abs(position) / itemWidth;
+
+        position +=
+          itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+        setPosition();
+        checkBtns();
+      });
+      //
+      const setPosition = () => {
+        track.style.transform = `translateX(${position}px)`;
+      };
+      //
+      const checkBtns = () => {
+        btnPrev.disabled = position === 0;
+        btnNext.disabled = position <= -(itemsCount - slidesToShow) * itemWidth;
+      };
+
+      checkBtns();
+    </script>
+    <!-- END slider -->
+    <script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>

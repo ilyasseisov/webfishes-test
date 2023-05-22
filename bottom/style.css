@@ -21,20 +21,20 @@ body {
 }
 
 #logo-bottom {
-  width: 120px;
+  width: 130px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 28px;
+  left: 30px;
 }
 #cta-bottom {
-  width: 252px;
+  width: 248.8px;
   position: absolute;
-  top: 50%;
+  top: 49%;
   transform: translateY(-50%);
-  right: 28px;
+  right: 23.2px;
   image-rendering: smooth;
-  animation: pulsate 4s ease-in-out infinite normal both;
+  /* animation: pulsate 4s ease-in-out infinite normal both; */
 }
 
 @keyframes pulsate {

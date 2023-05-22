@@ -21,41 +21,18 @@ body {
 }
 
 #logo-top {
-  width: 160px;
+  width: 176px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 28px;
+  left: 23px;
 }
 #text-top {
-  width: 200px;
+  width: 230px;
   position: absolute;
-  top: 50%;
+  top: 51.4%;
   transform: translateY(-50%);
-  right: 28px;
-}
-
-.btn {
-  width: calc((150 / 640) * 100%);
-  height: calc((30 / 160) * 100%);
-  background-image: url('./assets/btn.svg');
-  top: calc((109 / 160) * 100%);
-  left: calc((212 / 640) * 100%);
-  animation-name: btn;
-  animation-timing-function: linear;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes btn {
-  0% {
-    transform: scale(0.95);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+  right: 21px;
 }
 
 /*Preload*/

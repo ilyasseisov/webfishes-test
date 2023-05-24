@@ -8,7 +8,7 @@ body {
   overflow: hidden;
   max-width: 640px;
   width: 100%;
-  max-height: 160px;
+  max-height: 107px;
   height: 100%;
   cursor: pointer;
 }
@@ -21,30 +21,30 @@ body {
 }
 
 #logo-bottom {
-  width: 130px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 30px;
+  width: calc((178 / 640) * 100%);
+  height: calc((92.84 / 107) * 100%);
+  left: calc((41 / 640) * 100%);
+  top: calc((7 / 107) * 100%);
 }
 #cta-bottom {
-  width: 248.8px;
   position: absolute;
-  top: 49%;
-  transform: translateY(-50%);
-  right: 23.2px;
+  width: calc((340 / 640) * 100%);
+  height: calc((63 / 107) * 100%);
+  left: calc((270 / 640) * 100%);
+  top: calc((22 / 107) * 100%);
   image-rendering: smooth;
-  /* animation: pulsate 4s ease-in-out infinite normal both; */
+  animation: pulsate 4s ease-in-out infinite normal both;
 }
 
 @keyframes pulsate {
   0% {
-    transform: translateY(-50%) scale(1);
+    transform: scale(1);
   }
   50% {
-    transform: translateY(-50%) scale(1.08);
+    transform: scale(1.08);
   }
   100% {
-    transform: translateY(-50%) scale(1);
+    transform: scale(1);
   }
 }

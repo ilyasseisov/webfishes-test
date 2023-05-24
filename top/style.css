@@ -21,18 +21,19 @@ body {
 }
 
 #logo-top {
-  width: 176px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 23px;
+  width: calc((240 / 640) * 100%);
+  height: calc((125 / 160) * 100%);
+  left: calc((30 / 640) * 100%);
+  top: calc((17 / 160) * 100%);
 }
+
 #text-top {
-  width: 230px;
   position: absolute;
-  top: 51.4%;
-  transform: translateY(-50%);
-  right: 21px;
+  width: calc((314 / 640) * 100%);
+  height: calc((104 / 160) * 100%);
+  left: calc((297.5 / 640) * 100%);
+  top: calc((30.6 / 160) * 100%);
 }
 
 /*Preload*/
